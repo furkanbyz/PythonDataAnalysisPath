@@ -52,6 +52,7 @@ for _ in range(20000):
     else:
         e[val] += 1
 
+
 # ARRAY OPERATIONS
 f = np.array([1, 2, 3])
 g = np.array([7, 8, 9])
@@ -83,10 +84,35 @@ m = np.arange(1,11)
 m = m.reshape(5,2)
 # array'i 5e2 olacak şekilde değiştirir
 n = np.arange(1,11)
-# n = n.reshape(5,2).ndim
+n = n.reshape(5,2).ndim
 # ndim ile kaç boyutlu olduğu döndürülür
-n = np.arange(1,7)
-x=n[np.newaxis,:]
 
+### STACK
+o = np.array([1,2,3,4])
+p = np.array([5,6,7,8])
+# r = np.stack([o,p])
+# 2ye4
+# stack, tek satırlı ve sütunsuz olan bu iki array'i alt alta birbirinin row'u şekl. birleştirir.
+s = np.stack([o,p], axis=1)
+# 4e2
 
-print(x)
+### SPLITTING
+t = np.array([1,2,3,4,5,6,7,8,9,10])
+t = np.split(t , [2,5])
+# t array'inin 2 ve 5. indexlerinden önce keserek farklı arrayler oluşturur.
+t = t[1]
+
+### INDEXING wıth MULTIDIMENSIONAL ARRAYS
+u = np.arange(1,21).reshape(4,5)
+v = u[2,2]
+v = u[2][2]
+v = u[3][1:3]
+v = u[::2]
+# başlangıç ve bitiş noktaları yok. 2şer 2şer atlayarak al
+v = u[:,3]
+u=np.arange(1,13).reshape(3,4) 
+
+print(u)
+print(u[1::2])
+# print(v)
+
