@@ -110,9 +110,50 @@ v = u[3][1:3]
 v = u[::2]
 # başlangıç ve bitiş noktaları yok. 2şer 2şer atlayarak al
 v = u[:,3]
-u=np.arange(1,13).reshape(3,4) 
 
-print(u)
-print(u[1::2])
-# print(v)
+### FANCY INDEXING
+y = np.arange(1,15)
+indexes = [0,2,4,6]
+# y = y[indexes]
+y = np.arange(12).reshape(3,4)
+# y = y[ 1:3 , 2:5 ]
+# y = y.shape
+idx1 = [1,2,0]
+idx2 = [1,0,2]
+y = y[idx1, idx2]
+
+y = np.arange(20)
+y[[1,3,5,7]] = 100
+y[[0,2,4,6]] = [000, 200, 400, 600]
+
+### CONDITIONAL INDEXING
+# z = np.arange(10)
+# z = [z<5]
+# değerlerin koşulu sağlama durumunu kontrol edip true false şeklinde döndürür
+# z = z[z<5]
+# koşulu sağlayan değerleri array şekl döndürür
+
+# z = z[(z<3) | (z>5)]
+# z = z[(z<3) & (z>5)]
+# ile koşullar eklenebilir
+
+
+### NUMPY SUM
+a = np.arange(1,21).reshape(4,5)
+
+filt = a<10
+a = [a<10]
+# true false döndürür
+# a = a[filt]
+# koşulu sağlayan değerleri döndürür
+
+a =np.sum(filt)
+sum = np.sum(a)
+
+
+
+
+print(a)
+print(sum)
+
 
