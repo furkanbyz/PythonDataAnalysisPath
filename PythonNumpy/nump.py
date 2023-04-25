@@ -141,19 +141,44 @@ y[[0,2,4,6]] = [000, 200, 400, 600]
 ### NUMPY SUM
 a = np.arange(1,21).reshape(4,5)
 
-filt = a<10
-a = [a<10]
+# filt = a<10
+# a = [a<10]
 # true false döndürür
 # a = a[filt]
 # koşulu sağlayan değerleri döndürür
 
-a =np.sum(filt)
+# a =np.sum(filt)
 sum = np.sum(a)
+# arraydeki tüm değerleri toplar
+
+total = np.sum(a,axis=0)
+# axis=0 sütun bazında toplama yapar
+# axis=1 satır bazında topl. yapar
+
+# print(sum)
+# print(total.shape)
+
+
+### NUMPY ALL
+result = np.arange(1,21).reshape(4,5)
+# print(result>0)
+# tüm elemanları kontrol edip true false değerlerini döndürür
+
+# result = np.all(result>5)
+# tüm elemanları kontrol edip tek bir true ya da false değeri döndürür
+
+# result = np.all(result>5 , axis=1)
+# satır bazında koşulu kontrol edip true ya da false değerlerini her bir satır için döndürür
+# result = np.all(result>5 , axis=0)
+# sütun bazlı kontrol eder, tüm sütunlarda koşula uymayan değer old. 4 adet false değeri döner
+
+## all ; and gibi, any ise or gibi düşünülebilir
+## all'da tamamını kontrol eder
+## any'de ise herhangi birinin koşula uyması yeterlidir
 
 
 
+print(result)
 
-print(a)
-print(sum)
-
+# https://github.com/EnginAlpman/Python-Lectures/blob/master/numpy/numpy_introduction.ipynb
 
