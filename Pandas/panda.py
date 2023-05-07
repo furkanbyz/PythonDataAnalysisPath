@@ -72,7 +72,7 @@ result = df.fillna(method="ffill", axis=1) # null değerleri satır bazında son
 result = df.count() # kolon bazında null olmayan değerlerin sayısını verir
 
 
-# CLEANING NOTNULL VALUES
+# FINDING UNIQUE VALUES
 df = pd.DataFrame({
     'Sex': ['M', 'F', 'F', 'D', '?'],
     'Age': [29, 30, 24, 290, 25],
@@ -95,5 +95,67 @@ result = df.replace({ # değiştirme işlemi birçok parametreye göre yapıldı
 })
 
 
+# DUPLICATES
+ambassadors = pd.Series([
+    'France',
+    'United Kingdom',
+    'United Kingdom',
+    'Italy',
+    'Germany',
+    'Germany',
+    'Germany',
+], index=[
+    'Gérard Araud',
+    'Kim Darroch',
+    'Peter Westmacott',
+    'Armando Varricchio',
+    'Peter Wittig',
+    'Peter Ammon',
+    'Klaus Scharioth '
+])
+
+result = ambassadors.duplicated() # index kısmındaki tekrarlanan değerleri kontrol edip her biri için true false döndürür
+result = ambassadors.drop_duplicates()
+
+
+# DUPLICATES IN DATAFRAMES
+players = pd.DataFrame({
+    'Name': [
+        'Kobe Bryant',
+        'LeBron James',
+        'Kobe Bryant',
+        'Carmelo Anthony',
+        'Kobe Bryant',
+    ],
+    'Pos': [
+        'SG',
+        'SF',
+        'SG',
+        'SF',
+        'SF'
+    ]
+})
+result = players.duplicated() # satırın tüm kolonlarını kontrol eder
+result = players.duplicated(subset=['Name']) # Name kolonu bazında kontrol edildi
+result = players.duplicated(subset=['Pos']) # Pos kolonu bazında kontrol edildi
+
+
+# TEXT HANDLING - SPLITTING COLUMNS
+df = pd.DataFrame({
+    'Data': [
+        '1987_M_US _1',
+        '1990?_M_UK_1',
+        '1992_F_US_2',
+        '1970?_M_   IT_1',
+        '1985_F_I  T_2'
+]})
+result = df['Data'].str.split('_') # _ gördüğü yerlerde splitleme yapar
+result = df["Data"].str.split("_", expand=True) # splitleme yapıp dataframe oluşturur
+result.columns = ['Year', 'Sex', 'Country', 'No Children'] # dataframe'e kolon isimleri verildi
+# result = result['Country'].str.contains('U') # Country kolonunda U olanlar için true diğerleri için false döner
+result = result['Country'].str.replace(' ', '') # ?
+
+
 print(df)
+print("@@@@@@@@@@@@@@@@@@")
 print(result)
